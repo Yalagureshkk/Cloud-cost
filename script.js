@@ -43,12 +43,14 @@ function showResult(res){
   $('computeVal').innerText = formatINR(res.computeCost)
   $('storageVal').innerText = formatINR(res.storageCost)
   $('bandwidthVal').innerText = formatINR(res.bandwidthCost)
-  $('totalVal').innerText = formatINR(res.total)
-  $('yearlyVal').innerText = formatINR(res.yearly)
+
+  // ✅ Updated: Always display totals in INR (no $ symbol)
+  $('totalVal').innerText = 'Monthly Total: ' + formatINR(res.total)
+  $('yearlyVal').innerText = 'Yearly Total: ' + formatINR(res.yearly)
+
   $('result').hidden = false
-  const showYear = $('showYear').checked
-  document.querySelector('.yearly').hidden = !showYear
 }
+
 
 $('calc').addEventListener('click', ()=>{
   const res = calculateLocal()
