@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CloudRCalci — Cloud Resource Cost Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-bg">
+    <div class="container">
+      <header class="header">
+        <h1>CloudRCalci</h1>
+        <p class="subtitle">Client-side Cloud Resource Cost Calculator — ready for GitHub Pages</p>
+      </header>
+
+      <section class="card">
+        <div class="form-grid">
+          <div class="field">
+            <label>Cloud Provider</label>
+            <select id="provider">
+              <option value="aws">AWS</option>
+              <option value="azure">Azure</option>
+              <option value="gcp">GCP</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Instances</label>
+            <input id="instances" type="number" min="0" value="1">
+          </div>
+
+          <div class="field">
+            <label>vCPUs per instance</label>
+            <input id="vcpu" type="number" min="1" value="2">
+          </div>
+
+          <div class="field">
+            <label>Hours / month (per instance)</label>
+            <input id="hours" type="number" min="0" value="720">
+          </div>
+
+          <div class="field">
+            <label>Price per vCPU-hour (INR)</label>
+            <input id="price_vcpu" type="number" step="0.01" value="3.72">
+          </div>
+
+          <div class="field">
+            <label>Storage (GB)</label>
+            <input id="storage" type="number" min="0" value="100">
+          </div>
+
+          <div class="field">
+            <label>Price per GB-month (INR)</label>
+            <input id="price_storage" type="number" step="0.01" value="6.65">
+          </div>
+
+          <div class="field">
+            <label>Outbound Bandwidth (GB)</label>
+            <input id="bandwidth" type="number" min="0" value="200">
+          </div>
+
+          <div class="field">
+            <label>Price per GB (INR)</label>
+            <input id="price_bandwidth" type="number" step="0.01" value="7.47">
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="calc" class="btn-primary">Calculate</button>
+          <button id="download" class="btn-secondary">Download CSV</button>
+          <div class="spacer"></div>
+          <label class="switch"><input id="showYear" type="checkbox"><span>Show yearly</span></label>
+        </div>
+
+        <div id="result" class="result" aria-live="polite" hidden>
+          <div class="result-grid">
+            <div><strong>Compute</strong><div id="computeVal"></div></div>
+            <div><strong>Storage</strong><div id="storageVal"></div></div>
+            <div><strong>Bandwidth</strong><div id="bandwidthVal"></div></div>
+            <div class="total"><strong>Total (Monthly)</strong><div id="totalVal"></div></div>
+            <div class="yearly total-alt" hidden><strong>Total (Yearly)</strong><div id="yearlyVal"></div></div>
+          </div>
+        </div>
+
+        <div class="notes">
+          <small>Tip: Choose provider to auto-fill recommended INR rates. Currency: INR (₹).</small>
+        </div>
+      </section>
+
+      <footer class="footer">Made with ♥ — Ready for GitHub Pages</footer>
+    </div>
+  </main>
+
+<script src="script.js"></script>
+</body>
+</html>
