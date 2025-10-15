@@ -1,2 +1,2 @@
 web
-file:///C:/Users/Gagandeep%20B%20S/Downloads/CloudRCalci/index.html
+https://yalagureshkk.github.io/Cloud-cost/
